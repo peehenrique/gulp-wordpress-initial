@@ -1,0 +1,11 @@
+{
+    "name": "agenciavisia/viter",
+    "require": {
+        "jjgrainger/posttypes": "^2.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Visia\\": "src"
+        }
+    }
+}

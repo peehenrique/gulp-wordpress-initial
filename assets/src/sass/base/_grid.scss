@@ -1,0 +1,172 @@
+/*
+=======================================================
+Grid
+=======================================================
+1. Row
+2. Columns
+3. Responsive Columns
+=======================================================
+*/
+
+/*
+-------------------------------------------------------
+1. Row
+-------------------------------------------------------
+*/
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+
+  &:not(.no-gutter),
+  &:not(.no-gutter) > [class*="col"] {
+    padding: $grid-gutter;
+  }
+
+  & & {
+    margin: -$grid-gutter;
+    padding: 0;
+  }
+
+  &-centered {
+    justify-content: center;
+  }
+
+  &-inverted {
+    justify-content: flex-end;
+  }
+}
+
+/*
+-------------------------------------------------------
+2. Columns
+-------------------------------------------------------
+*/
+
+.col {
+  flex: 1 1 0;
+
+  &-vcenter {
+    align-self: center;
+  }
+
+  &-vbottom {
+    align-self: flex-end;
+  }
+
+  &-stretch {
+    align-self: stretch;
+  }
+
+  &-mx-auto {
+    margin: 0 auto;
+  }
+
+  &-ml-auto {
+    margin-left: auto;
+  }
+
+  &-mr-auto {
+    margin-right: auto;
+  }
+}
+
+.d-flex {
+  display: flex;
+}
+
+.inner {
+  position: relative;
+  height: 100%;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.inner-p-left {
+  position: relative;
+  height: 100%;
+  width: 90%;
+  margin: 0 auto;
+  margin-left: 0;
+  margin-right: 20px;
+}
+
+.inner-p-right {
+  position: relative;
+  height: 100%;
+  width: 90%;
+  margin: 0 auto;
+  margin-left: 20px;
+  margin-right: 0;
+}
+
+.hide {
+  display: none !important;
+}
+
+.section {
+  padding-top: 3em;
+  padding-bottom: 3em;
+}
+
+.w-100 {
+  width: 100%;
+  height: auto;
+}
+
+.center {
+  display: block;
+  margin: auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.col-right {
+  order: 1;
+}
+/*
+-------------------------------------------------------
+3. Responsive Columns
+-------------------------------------------------------
+*/
+
+@each $breakpoint in $breakpoints {
+  $breakpoint: nth($breakpoint, 1);
+
+  @include media-breakpoint(if($breakpoint == xs, -1, $breakpoint)) {
+    @include grid("col-" + $breakpoint);
+  }
+}
+
+
+/*
+-------------------------------------------------------
+4. Margins Top
+-------------------------------------------------------
+*/
+.mt-1 {
+  margin-top: 1rem;
+}
+.mt-2 {
+  margin-top: 2rem;
+}
+.mt-3 {
+  margin-top: 3rem;
+}
+.mt-4 {
+  margin-top: 4rem;
+}
+.mt-5 {
+  margin-top: 5rem;
+}
+
+.show {
+  display: block !important;
+}
+
+.bg-grey {
+  background: #F1F1F1;
+}

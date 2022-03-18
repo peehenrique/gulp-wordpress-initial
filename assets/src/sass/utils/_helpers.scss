@@ -1,0 +1,319 @@
+/*
+=======================================================
+Helpers
+=======================================================
+1. Background
+2. Container
+3. Display
+4. Floating
+5. Headings
+6. Display Headings
+7. Hide/Show
+8. Misc
+9. Padding
+10. Position
+11. Sizing
+12. Spacers
+13. Text Utilities
+14. Z-Index
+15. Animations
+=======================================================
+*/
+
+/*
+-------------------------------------------------------
+1. Background
+-------------------------------------------------------
+*/
+
+@each $class, $color in $colors {
+  $class: '.u-bg' + str-ucwords(#{$class});
+
+  #{$class} {
+    background-color: $color;
+  }
+}
+
+.u-bgImage {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/*
+-------------------------------------------------------
+2. Container
+-------------------------------------------------------
+*/
+
+.container {
+  @include container(1280px);
+}
+
+/*
+-------------------------------------------------------
+3. Display
+-------------------------------------------------------
+*/
+
+@each $property in 'block', 'inline', 'inline-block', 'table', 'table-cell', 'flex' {
+  .u-#{camelize($property)} {
+    display: #{$property};
+  }
+}
+
+/*
+-------------------------------------------------------
+4. Floating
+-------------------------------------------------------
+*/
+
+@each $float in 'left', 'right', 'none' {
+  .u-f#{$float} {
+    float: #{$float};
+  }
+}
+
+.u-clear {
+  clear: both;
+}
+
+/*
+-------------------------------------------------------
+5. Headings
+-------------------------------------------------------
+*/
+
+@for $i from 6 through 1 {
+  h#{$i},
+  .u-title-#{$i} {
+    font-size: $fontSize-headings;
+  }
+
+  $fontSize-headings: $fontSize-headings + $fontSize-ratio;
+}
+
+/*
+-------------------------------------------------------
+6. Display Headings
+-------------------------------------------------------
+*/
+
+@for $i from 4 through 1 {
+  .u-display-#{$i} {
+    font-size: $fontSize-display;
+  }
+
+  $fontSize-display: $fontSize-display + $fontSize-ratio;
+}
+
+/*
+-------------------------------------------------------
+7. Hide/Show
+-------------------------------------------------------
+*/
+
+.u-hide,
+.u-xs-hide,
+.u-sm-hide,
+.u-md-hide,
+.u-lg-hide,
+.u-xl-hide {
+  @include hideElement;
+}
+
+@each $breakpoint in $breakpoints {
+  $breakpoint: nth($breakpoint, 1);
+
+  @include media-breakpoint($breakpoint) {
+    .u-#{$breakpoint}-hide {
+      @include showElement;
+    }
+
+    .u-#{$breakpoint}-show {
+      @include hideElement;
+    }
+  }
+}
+
+/*
+-------------------------------------------------------
+8. Misc
+-------------------------------------------------------
+*/
+
+.u-tag,
+.u-vcenter {
+  @include vcenter;
+}
+
+.u-tag {
+  padding: 0.4em 0.6em;
+  border-radius: $formElements-borderRadius;
+}
+
+.u-hideOverflow {
+  overflow: hidden;
+}
+
+.u-smoothTransition {
+  transition: all 0.3s;
+}
+
+.u-noUnderline:hover {
+  text-decoration: none;
+}
+
+.u-underline {
+  text-decoration: underline;
+}
+
+.u-videoWrapper {
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 56.25%;
+
+  embed,
+  iframe,
+  object {
+    width: 100%;
+    height: 100%;
+    @include absolute(0, 0, 0, 0);
+  }
+}
+
+/*
+-------------------------------------------------------
+9. Padding
+-------------------------------------------------------
+*/
+
+@include spacing('u-pad-', 'padding');
+@include spacing('u-padTop-', 'padding-top');
+@include spacing('u-padBottom-', 'padding-bottom');
+
+/*
+-------------------------------------------------------
+10. Position
+-------------------------------------------------------
+*/
+
+@each $position in 'relative', 'absolute', 'fixed' {
+  .u-#{$position} {
+    position: #{$position};
+  }
+}
+
+/*
+-------------------------------------------------------
+11. Sizing
+-------------------------------------------------------
+*/
+
+.u-autoSize,
+.u-autoWidth {
+  width: auto;
+}
+
+.u-autoSize,
+.u-autoHeight {
+  height: auto;
+}
+
+.u-fullSize,
+.u-fullWidth {
+  width: 100%;
+}
+
+.u-fullSize,
+.u-fullHeight {
+  height: 100%;
+}
+
+/*
+-------------------------------------------------------
+12. Spacers
+-------------------------------------------------------
+*/
+
+@include spacing('u-spacer-', 'margin', true);
+@include spacing('u-spacerTop-', 'margin-top');
+@include spacing('u-spacerBottom-', 'margin-bottom');
+
+/*
+-------------------------------------------------------
+13. Text Utilities
+-------------------------------------------------------
+*/
+
+@each $class, $color in $colors {
+  .u-#{camelize('color-' + $class)} {
+    color: $color;
+  }
+}
+
+@each $align in 'center', 'left', 'right' {
+  .u-#{camelize('text-' + $align)} {
+    text-align: #{$align};
+  }
+}
+
+@each $sufix, $size in (small: $fontSize-small, large: $fontSize-large) {
+  .u-#{camelize('text-' + $sufix)} {
+    font-size: $size;
+  }
+}
+
+.u-textUppercase {
+  text-transform: uppercase;
+}
+
+.u-textBlock {
+  line-height: 160%;
+}
+
+/*
+-------------------------------------------------------
+14. Z-Index
+-------------------------------------------------------
+*/
+
+@for $i from 1 through 6 {
+  .u-zIndex-#{$i} {
+    z-index: $i;
+  }
+}
+
+/*
+-------------------------------------------------------
+15. Animations
+-------------------------------------------------------
+*/
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  animation: fadeIn 0.6s;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.fadeOut {
+  animation: fadeOut 0.6s;
+}

@@ -1,0 +1,91 @@
+/*
+=======================================================
+Config
+=======================================================
+1. Grid Options
+2. Set Assets Path
+3. Viewports
+4. Colors
+5. Font Sizes
+6. Form Elements
+=======================================================
+*/
+
+/*
+-------------------------------------------------------
+1. Grid Options
+-------------------------------------------------------
+*/
+
+$grid-cols: 12;
+$grid-gutter: 0.9em;
+
+/*
+-------------------------------------------------------
+2. Set Assets Path
+-------------------------------------------------------
+*/
+
+$assetsPath: '../../dist';
+
+/*
+-------------------------------------------------------
+3. Viewports
+-------------------------------------------------------
+*/
+
+$breakpoints: (
+  xs: 480px,
+  sm: 600px,
+  md: 840px,
+  lg: 960px,
+  xl: 1280px
+);
+
+/*
+-------------------------------------------------------
+4. Colors
+-------------------------------------------------------
+*/
+
+$colorBase-gray: #cecece;
+$colorBase-green: #9cbc4f;
+$colorBase-brown: #4e2e14;
+$colorVariation-ratio: 10%;
+
+$colors: (
+  red:      #b31212,
+  light:      #fff,
+  dark:       #000,
+  gray:       $colorBase-gray,
+  grayDark:   darken($colorBase-gray, $colorVariation-ratio),
+  grayLight:  lighten($colorBase-gray, $colorVariation-ratio),
+  green:      $colorBase-green,
+  greenDark:  darken($colorBase-green, $colorVariation-ratio),
+  greenLight: lighten($colorBase-green, $colorVariation-ratio),
+  brown:      $colorBase-brown,
+  brownDark:  darken($colorBase-brown, $colorVariation-ratio),
+  brownLight: lighten($colorBase-brown, $colorVariation-ratio)
+);
+
+/*
+-------------------------------------------------------
+5. Font Sizes
+-------------------------------------------------------
+*/
+
+$fontSize-default:  1em;
+$fontSize-ratio:    0.25;
+$fontSize-small:    0.85em;
+$fontSize-large:    $fontSize-default + $fontSize-ratio;
+$fontSize-headings: $fontSize-large;
+$fontSize-display:  $fontSize-large * 2;
+
+/*
+-------------------------------------------------------
+6. Form Elements
+-------------------------------------------------------
+*/
+
+$formElements: 'input, button, select, textarea';
+$formElements-borderRadius: 0.3rem;

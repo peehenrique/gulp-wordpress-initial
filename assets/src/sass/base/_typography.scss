@@ -1,0 +1,67 @@
+/*
+=======================================================
+Typography
+=======================================================
+1. Font-Face
+2. Defaults
+=======================================================
+*/
+
+/*
+-------------------------------------------------------
+1. Font-Face
+-------------------------------------------------------
+*/
+
+@include font-face("Loew-Bold", "Loew", "Loew-Bold", 800);
+@include font-face("Loew-ExtraBold", "Loew", "Loew-ExtraBold", 900);
+@include font-face("Loew-Regular", "Loew", "Loew-Regular", 400);
+
+/*
+-------------------------------------------------------
+2. Defaults
+-------------------------------------------------------
+*/
+
+body {
+  color: color(dark);
+  font-family: "Loew-Regular", sans-serif;
+  font-weight: normal;
+
+  @include media-breakpoint(md, max) {
+    font-size: 85%;
+  }
+}
+
+h1,
+h2 {
+  font-family: "Loew-ExtraBold", sans-serif;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Loew-Bold", sans-serif;
+}
+
+h1 {
+  font-weight: 800;
+  font-size: 60px;
+}
+
+h2 {
+  color: #104c97;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 36px;
+  letter-spacing: -0.02em;
+}
+
+p {
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 26px;
+  letter-spacing: -0.02em;
+  color: #000000;
+}

@@ -1,0 +1,42 @@
+{
+  "name": "spaceman",
+  "version": "0.0.1",
+  "title": "Spaceman",
+  "description": "A simple boilerplate to build websites and apps.",
+  "homepage": "https://github.com/pedrohtbranco",
+  "license": "MIT",
+  "author": {
+    "name": "Pedro Henrique",
+    "email": "pedrohtbranco@gmail.com",
+    "url": "http://pedrohtbranco.com.br/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pedrohtbranco"
+  },
+  "scripts": {
+    "dev": "gulp",
+    "build": "gulp build"
+  },
+  "devDependencies": {
+    "babel-loader": "^8.1.0",
+    "babel-preset-env": "^1.7.0",
+    "browser-sync": "^2.26.7",
+    "del": "^5.1.0",
+    "eslint": "^6.8.0",
+    "eslint-loader": "^3.0.4",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-cssnano": "^2.1.3",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-stylelint": "^11.0.0",
+    "imagemin-mozjpeg": "^8.0.0",
+    "imagemin-pngquant": "^8.0.0",
+    "stylelint": "^13.6.0",
+    "stylelint-config-standard": "^19.0.0",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack-stream": "^5.2.1"
+  },
+  "dependencies": {}
+}

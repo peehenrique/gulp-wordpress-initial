@@ -1,0 +1,178 @@
+/*
+=======================================================
+Mixins
+=======================================================
+1. Breakpoints
+2. Container
+3. Grid
+4. Font-Face
+5. Spacing
+6. Offset Positioning
+7. Utilities
+=======================================================
+*/
+
+/*
+-------------------------------------------------------
+1. Breakpoints
+-------------------------------------------------------
+*/
+
+@mixin media-breakpoint($size, $property: min) {
+  $breakpoint: breakpoint($size);
+
+  @if $breakpoint {
+    $size: $breakpoint;
+  }
+
+  @if $property == min {
+    $size: $size + 1;
+  }
+
+  @media (#{$property}-width: $size) {
+    @content;
+  }
+}
+
+/*
+-------------------------------------------------------
+2. Container
+-------------------------------------------------------
+*/
+
+@mixin container($size) {
+  max-width: #{$size};
+  margin: 0 auto;
+}
+
+/*
+-------------------------------------------------------
+3. Grid
+-------------------------------------------------------
+*/
+
+@mixin grid($name, $cols: $grid-cols) {
+  @for $i from 1 through $cols {
+    .#{$name}-#{$i} {
+      width: column($i, $cols);
+    }
+  }
+}
+
+/*
+-------------------------------------------------------
+4. Font-Face
+-------------------------------------------------------
+*/
+
+@mixin font-face($family, $directory, $file, $weight) {
+  $url: $directory + '/' + $file;
+
+  @font-face {
+    font-family: $family;
+    src: fonts($url + '.eot');
+    src:
+      fonts($url + '.eot') format('embedded-opentype'),
+      fonts($url + '.woff2') format('woff2'),
+      fonts($url + '.woff') format('woff'),
+      fonts($url + '.ttf') format('truetype'),
+      fonts($url + '.svg##{$file}') format('svg');
+    font-weight: $weight;
+  }
+
+  .u-#{camelize('font-' + $file)} {
+    font-family: $family;
+    font-weight: $weight;
+  }
+}
+
+/*
+-------------------------------------------------------
+5. Spacing
+-------------------------------------------------------
+*/
+
+@mixin spacing($name, $property, $zero: false) {
+  $i: 5;
+
+  @while $i < 35 {
+    $result: $i/10;
+    $result: #{$result}em;
+    $class: #{$name}#{$i};
+
+    @if $zero == true {
+      $result: #{$result} 0;
+    }
+
+    @if $i < 10 {
+      $class: #{$name}0#{$i};
+    }
+
+    .#{$class} {
+      #{$property}: #{$result};
+    }
+
+    $i: $i + 5;
+  }
+}
+
+/*
+-------------------------------------------------------
+6. Offset Positioning
+-------------------------------------------------------
+*/
+
+@mixin position($position, $top: null, $right: null, $bottom: null, $left: null) {
+  position: $position;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+@mixin absolute($args...) {
+  @include position(absolute, $args...);
+}
+
+@mixin relative($args...) {
+  @include position(relative, $args...);
+}
+
+@mixin fixed($args...) {
+  @include position(fixed, $args...);
+}
+
+@mixin static($args...) {
+  @include position(static, $args...);
+}
+
+/*
+-------------------------------------------------------
+7. Utilities
+-------------------------------------------------------
+*/
+
+@mixin vcenter {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+@mixin size($width: null, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+@mixin btnColor($backgroundColor, $borderColor: $backgroundColor) {
+  background-color: $backgroundColor;
+  border-color: $borderColor;
+}
+
+@mixin hideElement {
+  visibility: hidden;
+  @include absolute($top: -9999px, $left: -9999px);
+}
+
+@mixin showElement {
+  visibility: inherit;
+  @include static($top: 0, $left: 0);
+}
